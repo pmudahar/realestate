@@ -1,0 +1,171 @@
+
+body {
+    background: url('../../assets/images/background.jpg') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.thing-form {
+    margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.submit{
+    width:60%;
+}
+
+.tooltip {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+  -moz-border-radius:5px;
+    border-radius: 5px;
+  border: 2px solid #000;
+    /* background: #222222; */
+  background: #fff;
+    opacity: .9;
+    /* color: #eeeeee; */
+  color: black;
+    padding: 10px;
+    width: 300px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.tooltip .title {
+    font-size: 13px;
+}
+
+.ui-view-index {
+    width: 100%;
+    height: 100%;
+}
+
+.main-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+
+}
+
+.tooltip .name {
+  font-weight:bold;
+}
+
+.title{
+    font-family: 'Pacifico', cursive;
+    font-size: 5em;
+    text-align: center;
+    color: white;
+    margin-top: 12%;
+    text-shadow: 2px 2px 4px black;
+}
+
+.inputStyle{
+    width: 40%;
+    display: inline;
+}
+
+.inputBox{
+    padding: 50px 0 0 0;
+    margin: 0 auto;
+    // font-family: 'Shadows Into Light', cursive;  
+    //text-align: center;
+
+    input {
+        display: block;
+        margin: 20px auto;
+    }
+
+    button[type="submit"] {
+        display: block;
+        margin: 0 auto;
+        width: 40%;
+        font-family: 'Lato';
+        letter-spacing: 2px;
+    }
+
+}
+
+
+.box{
+    padding:10px 0;
+}
+
+.results{
+    font-family: 'Lato';
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+
+.resultTitle{
+    letter-spacing: 2px;
+}
+
+.arrow{
+    text-align: right;
+    height: 100%;
+
+}
+
+.resultLocation{
+    color: #CCCCCC;
+    size: 1em;
+}
+
+#container {
+    width: 100px;
+    height: 100px;
+}
+
+#container > svg {
+        width: 150px;
+        height: 150px;
+     position:absolute;
+     left: 50%;
+     top: 50%;
+     margin-left: -50px;
+    margin-top: -50px;
+}
+
+.data{
+    width: 600px;
+    height: 600px;
+    position: absolute;
+}
+
+#templateId{
+    width: 600px;
+    height: 600px;
+}
+
+div.ngdialog-content {
+    height: 700px !important;
+    width: 800px !important;
+}

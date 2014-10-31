@@ -1,0 +1,54 @@
+<div ng controller="MainCtrl" class="main-wrapper">
+<div class="container">
+
+
+	<div class="title">Where do you want to eat?</div>
+
+
+      <!-- restaurant input -->
+
+      <form ng-submit="getYelp(componentForm)"> 
+
+	<div class="inputBox">    	
+	    	<input type="text" class="form-control inputStyle" placeholder="Enter restaurant" ng-model="restaurant"> 
+		<input type="text" class="form-control inputStyle" placeholder="Enter city" ng-model="location">
+	    	<button type="submit" class="btn btn-primary" >SUBMIT</button>
+	</div>
+
+      </form>
+
+
+      <!-- display results -->
+
+      <ul class="row box">
+        <div class="col-md-4"></div>
+        <div  class="well col-md-4" ng-show="rest">
+        
+            <div class="row results" ng-repeat="restaurant in rest" ng-click="getAddrInfo(restaurant.url)">
+              <div class="col-md-8">
+                <p class="resultTitle">{{restaurant.name}}</p>
+                <p class="resultLocation">160 Pearl Street</p>
+              </div>
+
+              <div class="col-md-4 arrow">
+                <p class="glyphicon glyphicon-chevron-right"></p>
+              </div>  
+
+            </div>
+
+        </div>
+      </ul>
+        
+
+      <!-- display d3 visualization -->
+      <script type="text/ng-template" id="templateId">
+      <word-bubble val="keywords"></word-bubble>
+        <div class="data">
+          <word-bubble val="keywords">hello how are you</word-bubble>
+        </div>
+      </script>
+
+    </div>
+
+</div>
+
