@@ -7,7 +7,7 @@
 
       <!-- restaurant input -->
 
-      <form ng-submit="getYelp(componentForm)"> 
+      <form ng-submit="getYelp()"> 
 
 	<div class="inputBox">    	
 	    	<input type="text" class="form-control inputStyle" placeholder="Enter restaurant" ng-model="restaurant"> 
@@ -27,7 +27,7 @@
             <div class="row results" ng-repeat="restaurant in rest" ng-click="getAddrInfo(restaurant.url)">
               <div class="col-md-8">
                 <p class="resultTitle">{{restaurant.name}}</p>
-                <p class="resultLocation">160 Pearl Street</p>
+                <p class="resultLocation">{{restaurant.addr}}</p>
               </div>
 
               <div class="col-md-4 arrow">

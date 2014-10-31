@@ -2,34 +2,8 @@
 
 angular.module('realestateApp')
   .controller('MainCtrl', function ($scope, $http, socket, ngDialog) {
-    $scope.awesomeThings = [];
-    $scope.test = 'Paul';
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-
-    $scope.getData = function(){
-      $http.get('/api/datas')
-    }
-
+      // scrape reviews, get sentiment analysis, apply weights to each keyword, open modal
       $scope.getAddrInfo = function(url){
         $scope.text = "";
         $scope.keywords = [];
@@ -54,7 +28,7 @@ angular.module('realestateApp')
               else
                 $scope.keywords[i].occurances = 0;
 
-              $scope.keywords[i].total_amount = Math.abs($scope.keywords[i].occurances * $scope.keywords[i].sentimentScore);
+              $scope.keywords[i].total_amount = $scope.keywords[i].occurances * $scope.keywords[i].sentimentScore;
 
             }
 
@@ -70,23 +44,20 @@ angular.module('realestateApp')
 
       }
 
-
+      // get list of restaurants through Yelp search API
       $scope.getYelp = function(){
+
+          if ($scope.restaurant === undefined || $scope.restaurant === "") {
+            $scope.restaurant = "Burgers";
+          }
+
+          if ($scope.location === undefined || $scope.location === ""){
+            $scope.location = "NYC";
+          }
+
           $http.post('/api/datas/getYelp', {search: $scope.restaurant, location: $scope.location}).success(function(busArr){
             $scope.rest = busArr.restaurants;
-            console.log(busArr.restaurants);
           });
       }
 
-
-
-      $scope.getHPInfo = function(addrData){
-            $http.post('/api/datas/hpsentiment', {text: $scope.text}).success(function(sentiment){
-            
-            console.log(sentiment);
-
-            });
-      }
-
-
-}); 
+}); //MainCtrl
