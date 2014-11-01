@@ -17,9 +17,13 @@ angular.module('realestateApp')
                   return;
                 }
 	      	
+                $('#gates_tooltip').remove();
+
                 // add a tool tip to the different word bubbles
 	      	var CustomTooltip = function (tooltipId, width){
 	      		var tooltipId = tooltipId;
+	      		$("body").append("<div class='tooltip' id='"+tooltipId+"'></div>");
+
 	      		
 	      		if(width){
 	      			$("#"+tooltipId).css("width", width);

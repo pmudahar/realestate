@@ -1,5 +1,5 @@
 angular.module('realestateApp')
-  .controller('CreateVisualCtrl', function ($scope) {
+  .controller('CreateVisualCtrl', function () {
 
   });
 

@@ -81,7 +81,7 @@ exports.yelp = function(req, res){
                         var data = $(this);
 
                         // console.log("parent: " + data.parent().attr('class'));
-                        if (data.parent().attr('class') != 'footer-subsection'){
+                        if (data.parent().attr('class') !== 'footer-subsection'){
 
                             // In examining the DOM we notice that the title rests within the first child element of the header tag. 
                             // Utilizing jQuery we can easily navigate and get the text by writing the following code:

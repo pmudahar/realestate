@@ -5,7 +5,7 @@ angular.module('realestateApp')
 
       // scrape reviews, get sentiment analysis, apply weights to each keyword, open modal
       $scope.getAddrInfo = function(url){
-        $scope.text = "";
+        $scope.text = '';
         $scope.keywords = [];
         $http.post('/api/datas/yelp', {url: url}).success(function(data){
           $scope.text = data.reviews.join(' ');
@@ -20,13 +20,15 @@ angular.module('realestateApp')
               
               // count how many times the word appears in the reviews
               var str = $scope.keywords[i].text;
-              var re = new RegExp(str, "ig")
+              var re = new RegExp(str, 'ig');
               var count = ($scope.text).match(re);
 
-              if (count)
+              if (count){
                 $scope.keywords[i].occurances = count.length;
-              else
+              }
+              else{
                 $scope.keywords[i].occurances = 0;
+              }
 
               $scope.keywords[i].total_amount = $scope.keywords[i].occurances * $scope.keywords[i].sentimentScore;
 
@@ -34,30 +36,31 @@ angular.module('realestateApp')
 
               // open results in ngDialog
               ngDialog.open({ 
-                templateUrl: '/components/createVisual/createVisual.html',
+                templateUrl: 'components/createVisual/createVisual.html',
                 controller: 'CreateVisualCtrl',
                 scope: $scope
               }); 
             
+              
           });
         });
 
-      }
+      };
 
       // get list of restaurants through Yelp search API
       $scope.getYelp = function(){
 
-          if ($scope.restaurant === undefined || $scope.restaurant === "") {
-            $scope.restaurant = "Burgers";
+          if ($scope.restaurant === undefined || $scope.restaurant === '') {
+            $scope.restaurant = 'Burgers';
           }
 
-          if ($scope.location === undefined || $scope.location === ""){
-            $scope.location = "NYC";
+          if ($scope.location === undefined || $scope.location === ''){
+            $scope.location = 'NYC';
           }
 
           $http.post('/api/datas/getYelp', {search: $scope.restaurant, location: $scope.location}).success(function(busArr){
             $scope.rest = busArr.restaurants;
           });
-      }
+      };
 
 }); //MainCtrl
