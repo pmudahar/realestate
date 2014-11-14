@@ -9,11 +9,14 @@ angular.module('realestateApp')
         $scope.keywords = [];
         $http.post('/api/datas/yelp', {url: url}).success(function(data){
           $scope.text = data.reviews.join(' ');
+          console.log("text: ", $scope.text);
 
           // get keyword entities from 80 reviews of that restaurant
           $http.post('/api/datas/sentiment', {text: $scope.text}).success(function(sentiment){
             $scope.keywords = sentiment;
             
+            console.log("sentiment: ", sentiment);
+
             // go through keywords and set weights to each keyword based on occurances
             for (var i = 0; i < $scope.keywords.length; i++){
               $scope.keywords[i].id = i;

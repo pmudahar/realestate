@@ -12,6 +12,7 @@ var async = require('async');
 exports.sentiment = function(req, res){
       var url = 'http://access.alchemyapi.com/calls/text/TextGetRankedKeywords';
       var text = req.body.text;
+      console.log("text: ", text)
 
       var options = {
         url: url,
@@ -46,6 +47,7 @@ exports.sentiment = function(req, res){
             keywordsArr.push(keywordObj);
         }
 
+
         return res.send(keywordsArr);
       });
 };
@@ -75,7 +77,7 @@ exports.yelp = function(req, res){
                     var $ = cheerio.load(html);
 
                     // Finally, we'll define the variables we're going to capture
-                    $('.ieSucks').filter(function(){
+                      $( "p[itemprop='description']" ).filter(function(data){
 
                         // Let's store the data we filter into a variable so we can easily see what's going on.
                         var data = $(this);
@@ -90,11 +92,11 @@ exports.yelp = function(req, res){
                            if (json.reviews.indexOf(review) === -1)
 
                             // Once we have our title, we'll store it to the our json object.
-                                json.reviews.push(review); 
+                              json.reviews.push(review); 
                         }
-                    });
-                }
-
+                      });                     
+                  }
+                
                 if (i < 1)
                     callOnYelp(++i, json, numReviews);
                 else
@@ -116,6 +118,8 @@ exports.yelp = function(req, res){
             numReviewsArr.forEach(function(val){
               if ((/[0-9]+/).test(val)) { numReviews = parseInt(val); }
             }); 
+
+            console.log("numReviews: ", numReviews);
         }
 
         callOnYelp(0, json, numReviews)
